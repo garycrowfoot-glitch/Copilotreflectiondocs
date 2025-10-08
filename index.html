@@ -169,16 +169,24 @@
         <div class="step">
             <div class="step-title">
                 <span class="step-number">1</span>
+                Download the Case Summary
+            </div>
+            <p style="margin-bottom: 15px;">Download the Mia Brown case summary document to your computer:</p>
+            <a href="https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx" download class="button button-secondary">📥 Download Case Summary</a>
+        </div>
+
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">2</span>
                 Copy the Prompt
             </div>
             <p style="margin-bottom: 15px;">Click the button below to copy the prompt to your clipboard:</p>
             <button class="button button-primary" onclick="copyPrompt()">📋 Copy Prompt</button>
-            <div class="prompt-box" id="promptBox">You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. The case study for review is available at: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx</div>
         </div>
         
         <div class="step">
             <div class="step-title">
-                <span class="step-number">2</span>
+                <span class="step-number">3</span>
                 Open Microsoft Copilot
             </div>
             <p style="margin-bottom: 15px;">Click below to open Copilot (sign in with your University of Newcastle account):</p>
@@ -187,14 +195,16 @@
         
         <div class="step">
             <div class="step-title">
-                <span class="step-number">3</span>
-                Paste & Start
+                <span class="step-number">4</span>
+                Upload, Paste & Start
             </div>
-            <p>Paste the prompt into Copilot's chat box and press Enter. Annie will introduce herself and guide you through the reflection!</p>
+            <p style="margin-bottom: 10px;"><strong>Upload the case summary:</strong> Click the attachment icon (📎) in Copilot and upload the Mia Brown document you downloaded in Step 1.</p>
+            <p style="margin-bottom: 10px;"><strong>Paste the prompt:</strong> Paste the prompt from Step 2 into Copilot's chat box.</p>
+            <p><strong>Press Enter:</strong> Annie will introduce herself and guide you through the reflection!</p>
         </div>
         
         <div class="info-box">
-            <strong>📄 Case Study:</strong> The case study document (Mia Brown) is automatically linked in the prompt. Copilot will access it when you start the conversation.
+            <strong>💡 Tip:</strong> Make sure to upload the case summary document BEFORE pasting the prompt for the best experience.
         </div>
     </div>
     
@@ -203,7 +213,7 @@
     </div>
     
     <script>
-        const promptText = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. The case study for review is available at: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx`;
+        const promptText = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. I will upload the Mia Brown case study document for you to review.`;
         
         function copyPrompt() {
             navigator.clipboard.writeText(promptText).then(function() {
