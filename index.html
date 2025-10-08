@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflecting on the Mia Brown Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px 10px 10px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .button-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .button-secondary {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .button-secondary:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+        
+        .prompt-box {
+            background: #f8f9fa;
+            border: 2px dashed #cbd5e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #2d3748;
+            max-height: 200px;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            font-weight: 600;
+        }
+        
+        .copy-notification.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .info-box {
+            background: #e6fffa;
+            border-left: 4px solid #38b2ac;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box strong {
+            color: #234e52;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Reflecting on the Mia Brown Case Study</h1>
+        <p class="subtitle">Gibbs Reflective Cycle with AI Assistant</p>
+        
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                Copy the Prompt
+            </div>
+            <p style="margin-bottom: 15px;">Click the button below to copy the prompt to your clipboard:</p>
+            <button class="button button-primary" onclick="copyPrompt()">📋 Copy Prompt</button>
+            <div class="prompt-box" id="promptBox">You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. The case study for review is available at: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx</div>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                Open Microsoft Copilot
+            </div>
+            <p style="margin-bottom: 15px;">Click below to open Copilot (sign in with your University of Newcastle account):</p>
+            <a href="https://copilot.microsoft.com" target="_blank" class="button button-secondary">🚀 Open Copilot</a>
+        </div>
+        
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                Paste & Start
+            </div>
+            <p>Paste the prompt into Copilot's chat box and press Enter. Annie will introduce herself and guide you through the reflection!</p>
+        </div>
+        
+        <div class="info-box">
+            <strong>📄 Case Study:</strong> The case study document (Mia Brown) is automatically linked in the prompt. Copilot will access it when you start the conversation.
+        </div>
+    </div>
+    
+    <div class="copy-notification" id="notification">
+        ✓ Prompt copied to clipboard!
+    </div>
+    
+    <script>
+        const promptText = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. The case study for review is available at: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx`;
+        
+        function copyPrompt() {
+            navigator.clipboard.writeText(promptText).then(function() {
+                const notification = document.getElementById('notification');
+                notification.classList.add('show');
+                setTimeout(function() {
+                    notification.classList.remove('show');
+                }, 3000);
+            }).catch(function(err) {
+                alert('Failed to copy. Please manually copy the text from the box above.');
+            });
+        }
+    </script>
+</body>
+</html>
