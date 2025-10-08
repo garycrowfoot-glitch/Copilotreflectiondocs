@@ -1,0 +1,33 @@
+<svg width="400" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="120" rx="12" fill="url(#grad1)" filter="url(#shadow)"/>
+  
+  <!-- Icon Circle -->
+  <circle cx="60" cy="60" r="28" fill="white" opacity="0.2"/>
+  <circle cx="60" cy="60" r="24" fill="white"/>
+  
+  <!-- Thought Bubble Icon -->
+  <circle cx="52" cy="65" r="8" fill="#667eea"/>
+  <circle cx="62" cy="58" r="11" fill="#667eea"/>
+  <circle cx="52" cy="52" r="6" fill="#667eea"/>
+  <ellipse cx="60" cy="60" rx="3" ry="4" fill="white" opacity="0.3"/>
+  <ellipse cx="55" cy="57" rx="2" ry="3" fill="white" opacity="0.3"/>
+  
+  <!-- Text -->
+  <text x="105" y="50" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white">
+    Start Your Reflection
+  </text>
+  <text x="105" y="75" font-family="Arial, sans-serif" font-size="16" fill="white" opacity="0.95">
+    Mia Brown Case Study • Gibbs Cycle
+  </text>
+</svg>
