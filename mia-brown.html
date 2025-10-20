@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nursing Reflection Workshops</title>
+    <title>Reflecting on the Mia Brown Case Study</title>
     <style>
         * {
             margin: 0;
@@ -15,149 +15,159 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
-        }
-        
-        .header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 18px;
-            opacity: 0.95;
-        }
-        
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .case-card {
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
         }
         
-        .case-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(78, 177, 229, 0.3);
-        }
-        
-        .case-icon {
-            font-size: 40px;
+        h1 {
+            color: #333;
             margin-bottom: 15px;
+            font-size: 28px;
         }
         
-        .case-card h2 {
-            color: #211D1F;
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-        
-        .case-card p {
+        .subtitle {
             color: #666;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 18px 50px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .button-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .info-box p {
+            color: #555;
             font-size: 14px;
             line-height: 1.6;
         }
         
-        .case-card .button {
-            display: inline-block;
-            background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .copy-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
             color: white;
-            padding: 12px 25px;
+            padding: 15px 25px;
             border-radius: 8px;
-            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
             font-weight: 600;
-            text-align: center;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
         }
         
-        .case-card .button:hover {
-            box-shadow: 0 5px 15px rgba(78, 177, 229, 0.4);
-            transform: scale(1.02);
+        .copy-notification.show {
+            display: block;
+            animation: slideIn 0.3s ease-out;
         }
         
-        .info-banner {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            padding: 25px;
-            color: white;
-            text-align: center;
-        }
-        
-        .info-banner h3 {
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        
-        .info-banner p {
-            opacity: 0.95;
-            font-size: 14px;
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🩺 Nursing Reflection Workshops</h1>
-            <p>Select a case study to begin your Gibbs Reflective Cycle</p>
-        </div>
+        <div class="icon">🩺</div>
+        <h1>Reflecting on the Mia Brown Case Study</h1>
+        <p class="subtitle">
+            Begin your Gibbs Reflective Cycle with Annie, your AI nurse educator
+        </p>
         
-        <div class="cases-grid">
-            <!-- Case Study 1 -->
-            <div class="case-card">
-                <div class="case-icon">👩‍⚕️</div>
-                <h2>Mia Brown Case Study</h2>
-                <p>Work through the Mia Brown case study with Annie, your AI nurse educator. Explore the clinical scenario and develop your reflective practice skills using the Gibbs reflective cycle.</p>
-                <a href="/" class="button">Start Reflection →</a>
-            </div>
-            
-            <!-- Case Study 2 -->
-            <div class="case-card">
-                <div class="case-icon">🏥</div>
-                <h2>Case Study 2</h2>
-                <p>Engage with the second case study in this series. Annie will guide you through deeper reflection and help you identify areas for professional growth.</p>
-                <a href="/case-study-2.html" class="button">Start Reflection →</a>
-            </div>
-            
-            <!-- Case Study 3 -->
-            <div class="case-card">
-                <div class="case-icon">💼</div>
-                <h2>Case Study 3</h2>
-                <p>Continue your reflective journey with the third case study. Build on your reflective practice skills and receive constructive feedback from Annie.</p>
-                <a href="/case-study-3.html" class="button">Start Reflection →</a>
-            </div>
-        </div>
+        <button class="button button-primary" onclick="launchClaude()">
+            🚀 Start Reflection with Annie
+        </button>
         
-        <div class="info-banner">
-            <h3>💡 About These Workshops</h3>
-            <p>Each workshop guides you through the Gibbs Reflective Cycle with Annie, your expert nurse educator. You'll receive feedback on your reflective practice and identify areas for professional development.</p>
+        <div class="info-box">
+            <h3>✨ What to expect:</h3>
+            <p>Annie will guide you through the Gibbs reflective cycle, ask probing questions to deepen your reflection, and provide constructive feedback on your reflective practice. The session includes the Mia Brown case study.</p>
         </div>
     </div>
+    
+    <div class="copy-notification" id="notification">
+        ✓ Launching Claude...
+    </div>
+    
+    <script>
+        const prompt = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. 
+
+Please access and review the Mia Brown case study document from this link: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx
+
+Once you have reviewed the document, introduce yourself and begin the Gibbs reflective cycle.`;
+
+        function launchClaude() {
+            const encodedPrompt = encodeURIComponent(prompt);
+            const claudeUrl = `https://claude.ai/new?q=${encodedPrompt}`;
+            
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            setTimeout(function() {
+                window.open(claudeUrl, '_blank');
+            }, 300);
+            
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
