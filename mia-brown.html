@@ -25,7 +25,7 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 600px;
+            max-width: 650px;
             width: 100%;
             padding: 50px 40px;
             text-align: center;
@@ -44,41 +44,38 @@
             line-height: 1.5;
         }
         
-        .button {
+        .button-primary {
             display: inline-block;
-            padding: 18px 50px;
-            margin: 15px 0;
+            padding: 20px 50px;
+            margin: 20px 0;
             border: none;
             border-radius: 10px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             text-decoration: none;
+            background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
+            color: white;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .button-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
         .button-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(78, 177, 229, 0.4);
         }
         
         .info-box {
-            background: #f0f4ff;
-            border-left: 5px solid #667eea;
+            background: #e8f4f9;
+            border-left: 5px solid #4EB1E5;
             padding: 20px;
-            margin-top: 40px;
+            margin-top: 30px;
             border-radius: 8px;
             text-align: left;
         }
         
         .info-box h3 {
-            color: #667eea;
+            color: #4EB1E5;
             margin-bottom: 10px;
             font-size: 16px;
         }
@@ -94,22 +91,26 @@
             margin-bottom: 20px;
         }
         
-        .copy-notification {
+        .notification {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #48bb78;
-            color: white;
             padding: 15px 25px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             display: none;
             font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
         }
         
-        .copy-notification.show {
+        .notification.show {
             display: block;
-            animation: slideIn 0.3s ease-out;
+        }
+        
+        .notification.success {
+            background: #48bb78;
+            color: white;
         }
         
         @keyframes slideIn {
@@ -132,37 +133,84 @@
             Begin your Gibbs Reflective Cycle with Annie, your AI nurse educator
         </p>
         
-        <button class="button button-primary" onclick="launchClaude()">
+        <button class="button-primary" onclick="launchClaude()">
             🚀 Start Reflection with Annie
         </button>
         
         <div class="info-box">
-            <h3>✨ What to expect:</h3>
-            <p>Annie will guide you through the Gibbs reflective cycle, ask probing questions to deepen your reflection, and provide constructive feedback on your reflective practice. The session includes the Mia Brown case study.</p>
+            <h3>✨ What Happens Next</h3>
+            <p>Click the button above to open Claude with Annie as your guide. She will introduce herself and lead you through the Gibbs reflective cycle based on the Mia Brown case study. You'll receive constructive feedback on your reflection and identify areas for professional development.</p>
         </div>
     </div>
     
-    <div class="copy-notification" id="notification">
-        ✓ Launching Claude...
-    </div>
+    <div class="notification" id="notification"></div>
     
     <script>
-        const prompt = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection. 
+        const caseStudy = `CASE STUDY - MIA BROWN
 
-Please access and review the Mia Brown case study document from this link: https://github.com/garycrowfoot-glitch/Copilotreflectiondocs/raw/refs/heads/main/Case%20Study%20-%20Mia%20Brown.docx
+Mia Brown is a 5-year-old child presenting to the emergency department with her mother Sally Brown on the advice of their general practitioner (GP). Mia has become increasingly short of breath (SOB) and has had cold-like symptoms including a cough and runny nose for three days. Sally also took Mia to the GP yesterday who diagnosed a viral cold and stated to present to the emergency department if it got worse. Mia has become increasingly unwell over the last few hours. 
 
-Once you have reviewed the document, introduce yourself and begin the Gibbs reflective cycle.`;
+MEDICAL HISTORY:
+- Diagnosed with small airway disease about a year ago
+- Had one exacerbation requiring hospital admission
+- Born six weeks early and weighed less than 2.5kg at birth
+- Hospitalised in ICU at 18 months of age with SOB
+- Frequent coughs and colds
+
+SOCIAL CONTEXT:
+- Lives with mother Sally and father Darren in social housing
+- House is close to a coal-fired power station
+- Father unable to work following workplace injury to his back
+- Mother has been picking up extra shifts at local restaurant
+- Father's tobacco consumption increased from 5 to 10 cigarettes per day due to stress
+
+CURRENT PRESENTATION - TRIAGE ASSESSMENT:
+- Agitated and irritable
+- Intercostal and subcostal recession noted
+- Using accessory muscles
+- No tracheal tug
+- Looks unwell, vomited at triage
+- Decreased breath sounds in lower lobes
+- Wheezing on expiration
+- HR 160, pink colouration
+- No complaints of pain
+- SpO2 92% on room air
+- RR 45
+- Temp 36.8
+- NKDA (No Known Drug Allergies)
+- IUTD (Immunisations Up To Date)
+- Weight 17kg
+- Last Ventolin: 3 puffs via spacer 30 minutes before presentation
+
+PARENTAL CONTEXT:
+- Mother appears distressed
+- Has taken Mia to GP 3 times over the past 2 weeks
+
+OUTCOME:
+- Mia has greatly improved after treatment
+- Vital signs have stabilised
+- Salbutamol requirement decreased to 4 puffs every 2 hours via MDI
+- Being admitted to paediatric ward for ongoing monitoring`;
+
+        const prompt = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection.
+
+Here is the Mia Brown case study for your reference:
+
+${caseStudy}
+
+Please review the case study above and then introduce yourself as Annie. Begin the Gibbs reflective cycle by asking your first question about the student's experience or understanding of this case.`;
 
         function launchClaude() {
             const encodedPrompt = encodeURIComponent(prompt);
             const claudeUrl = `https://claude.ai/new?q=${encodedPrompt}`;
             
             const notification = document.getElementById('notification');
-            notification.classList.add('show');
+            notification.textContent = '🚀 Launching Claude...';
+            notification.className = 'notification show success';
             
             setTimeout(function() {
                 window.open(claudeUrl, '_blank');
-            }, 300);
+            }, 500);
             
             setTimeout(function() {
                 notification.classList.remove('show');
