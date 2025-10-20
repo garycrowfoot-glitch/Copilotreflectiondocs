@@ -53,7 +53,6 @@
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            text-decoration: none;
             background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
             color: white;
             transition: all 0.3s;
@@ -109,7 +108,7 @@
         }
         
         .notification.success {
-            background: #48bb78;
+            background: #4EB1E5;
             color: white;
         }
         
@@ -123,6 +122,10 @@
                 opacity: 1;
             }
         }
+        
+        form {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -133,17 +136,22 @@
             Begin your Gibbs Reflective Cycle with Annie, your AI nurse educator
         </p>
         
-        <button class="button-primary" onclick="launchClaude()">
+        <button class="button-primary" onclick="startReflection()">
             🚀 Start Reflection with Annie
         </button>
         
         <div class="info-box">
             <h3>✨ What Happens Next</h3>
-            <p>Click the button above to open Claude with Annie as your guide. She will introduce herself and lead you through the Gibbs reflective cycle based on the Mia Brown case study. You'll receive constructive feedback on your reflection and identify areas for professional development.</p>
+            <p>Click the button above to open Claude AI with the Mia Brown case study and Annie ready to guide you through the Gibbs reflective cycle. You'll receive constructive feedback on your reflection and identify areas for professional development.</p>
         </div>
     </div>
     
     <div class="notification" id="notification"></div>
+    
+    <!-- Hidden form for submission -->
+    <form id="claudeForm" method="POST" action="https://claude.ai/api/conversations" target="_blank">
+        <textarea name="prompt" id="promptField"></textarea>
+    </form>
     
     <script>
         const caseStudy = `CASE STUDY - MIA BROWN
@@ -200,17 +208,16 @@ ${caseStudy}
 
 Please review the case study above and then introduce yourself as Annie. Begin the Gibbs reflective cycle by asking your first question about the student's experience or understanding of this case.`;
 
-        function launchClaude() {
-            const encodedPrompt = encodeURIComponent(prompt);
-            const claudeUrl = `https://claude.ai/new?q=${encodedPrompt}`;
-            
+        function startReflection() {
             const notification = document.getElementById('notification');
-            notification.textContent = '🚀 Launching Claude...';
+            notification.textContent = '🚀 Opening Claude...';
             notification.className = 'notification show success';
             
-            setTimeout(function() {
-                window.open(claudeUrl, '_blank');
-            }, 500);
+            // Copy prompt to clipboard for manual paste as backup
+            navigator.clipboard.writeText(prompt);
+            
+            // Open Claude in new tab
+            const claudeWindow = window.open('https://claude.ai/new', '_blank');
             
             setTimeout(function() {
                 notification.classList.remove('show');
