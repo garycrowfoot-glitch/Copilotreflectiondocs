@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflecting on the Mia Brown Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 650px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .button-primary {
+            display: inline-block;
+            padding: 20px 50px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(135deg, #4EB1E5 0%, #211D1F 100%);
+            color: white;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(78, 177, 229, 0.4);
+        }
+        
+        .info-box {
+            background: #e8f4f9;
+            border-left: 5px solid #4EB1E5;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            color: #4EB1E5;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .info-box p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+            font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .notification.show {
+            display: block;
+        }
+        
+        .notification.success {
+            background: #4EB1E5;
+            color: white;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🩺</div>
+        <h1>Reflecting on the Mia Brown Case Study</h1>
+        <p class="subtitle">
+            Begin your Gibbs Reflective Cycle with Annie, your AI nurse educator
+        </p>
+        
+        <button class="button-primary" onclick="startReflection()">
+            🚀 Start Reflection with Annie
+        </button>
+        
+        <div class="info-box">
+            <h3>✨ What Happens Next</h3>
+            <p>Click the button above to open Claude AI with the Mia Brown case study and Annie ready to guide you through the Gibbs reflective cycle. The prompt will be automatically loaded into the chat.</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification"></div>
+    
+    <script>
+        const caseStudy = `CASE STUDY - MIA BROWN
+
+Mia Brown is a 5-year-old child presenting to the emergency department with her mother Sally Brown on the advice of their general practitioner (GP). Mia has become increasingly short of breath (SOB) and has had cold-like symptoms including a cough and runny nose for three days. Sally also took Mia to the GP yesterday who diagnosed a viral cold and stated to present to the emergency department if it got worse. Mia has become increasingly unwell over the last few hours. 
+
+MEDICAL HISTORY:
+- Diagnosed with small airway disease about a year ago
+- Had one exacerbation requiring hospital admission
+- Born six weeks early and weighed less than 2.5kg at birth
+- Hospitalised in ICU at 18 months of age with SOB
+- Frequent coughs and colds
+
+SOCIAL CONTEXT:
+- Lives with mother Sally and father Darren in social housing
+- House is close to a coal-fired power station
+- Father unable to work following workplace injury to his back
+- Mother has been picking up extra shifts at local restaurant
+- Father's tobacco consumption increased from 5 to 10 cigarettes per day due to stress
+
+CURRENT PRESENTATION - TRIAGE ASSESSMENT:
+- Agitated and irritable
+- Intercostal and subcostal recession noted
+- Using accessory muscles
+- No tracheal tug
+- Looks unwell, vomited at triage
+- Decreased breath sounds in lower lobes
+- Wheezing on expiration
+- HR 160, pink colouration
+- No complaints of pain
+- SpO2 92% on room air
+- RR 45
+- Temp 36.8
+- NKDA (No Known Drug Allergies)
+- IUTD (Immunisations Up To Date)
+- Weight 17kg
+- Last Ventolin: 3 puffs via spacer 30 minutes before presentation
+
+PARENTAL CONTEXT:
+- Mother appears distressed
+- Has taken Mia to GP 3 times over the past 2 weeks
+
+OUTCOME:
+- Mia has greatly improved after treatment
+- Vital signs have stabilised
+- Salbutamol requirement decreased to 4 puffs every 2 hours via MDI
+- Being admitted to paediatric ward for ongoing monitoring`;
+
+        const prompt = `You are an expert nurse educator specialising in supporting a pre-registration nursing student debrief after completing a theoretical case study. You must lead the student (me) through the Gibbs reflective cycle, prompting for more information and deeper reflection where necessary. You can reroute the discussion to the next question if there remains an insufficient response to the question after three attempts. You are required to introduce yourself as Annie and communicate in Australian English. Your first question commences the cycle. At the end of the Gibbs reflective cycle, you must provide a summary and constructive critique of the student's reflection. You should identify areas where the student can build reflective skills for the future. The student responses under each heading, and your feedback should be provided as a downloadable Word document following the completion of the reflection.
+
+Here is the Mia Brown case study for your reference:
+
+${caseStudy}
+
+Please review the case study above and then introduce yourself as Annie. Begin the Gibbs reflective cycle by asking your first question about the student's experience or understanding of this case.`;
+
+        function startReflection() {
+            const notification = document.getElementById('notification');
+            notification.textContent = '📋 Copying prompt and opening Claude...';
+            notification.className = 'notification show success';
+            
+            // Copy prompt to clipboard
+            navigator.clipboard.writeText(prompt).then(function() {
+                notification.textContent = '✓ Prompt copied! Opening Claude...';
+                setTimeout(function() {
+                    window.open('https://claude.ai/new', '_blank');
+                }, 500);
+            }).catch(function(err) {
+                notification.textContent = 'Opening Claude... (paste manually if needed)';
+                window.open('https://claude.ai/new', '_blank');
+            });
+            
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
